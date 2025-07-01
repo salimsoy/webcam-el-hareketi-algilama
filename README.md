@@ -18,15 +18,16 @@ Dense optik akış, bir sahnedeki nesnelerle kamera arasındaki bağıl harekete
 - Hareketli Nesne Dikdörtgen ile Belirlenir ve sol üst köşesine nokta koyulur.
 - Kullanıcı `m` harfine tıkladığında takip noktası ayarlanır
 - Bu noktadan Lucas-Kanade ile Takip Başlar
-- Nesnenin Hareketi Renkli Çizgilerle İzlenir
+- Nesnenin Hareketi Renkli Çizgilerle gösterilir
 - `esc` tuşuna basıldığında uygulama sonlandırılır.
 
 **Temel Mantık: 2**
 - Kamera görüntüsü RGB formatına dönüştürülür.
 - MediaPipe ile eldeki landmark noktalar bulunur.
 - İşaret parmağının ucu (`landmark[8]`) başlangıç takip noktası olarak alınır.
-- Takip noktası sonraki karede nereye gittiği Lucas-Kanade ile hesaplanır.
-- Her karede hareketin izi renkli çizgilerle gösterilir.
+- Takip noktası Lucas-Kanade ile Takip edilier.
+- Nesnenin Hareketi Renkli Çizgilerle gösterilir.
+- `esc` tuşuna basıldığında uygulama sonlandırılır.
 
 **Avantajları: 1**
 - El, top, kutu gibi hareket eden herhangi bir cismi tespit eder.
