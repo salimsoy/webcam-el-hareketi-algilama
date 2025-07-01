@@ -17,7 +17,7 @@ Dense optik akış, bir sahnedeki nesnelerle kamera arasındaki bağıl harekete
 - Kamera Açılır İlk Kare Alınır Farneback ile Hareket Tespiti
 - Hareketli Nesne Dikdörtgen ile Belirlenir ve sol üst köşesine nokta koyulur.
 - Kullanıcı `m` harfine tıkladığında takip noktası ayarlanır
-- Bu noktadan Lucas-Kanade Optical Flow ile Takip Başlar
+- Bu noktadan Lucas-Kanade ile Takip Başlar
 - Nesnenin Hareketi Renkli Çizgilerle İzlenir
 - `esc` tuşuna basıldığında uygulama sonlandırılır.
 
