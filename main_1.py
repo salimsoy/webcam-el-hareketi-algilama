@@ -11,13 +11,13 @@ class HandDetect:
                          criteria=(cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03))
         self.color = np.random.randint(0, 255, (100, 3))
         self.mp_hands = mp.solutions.hands
-        self.hands = self.mp_hands.Hands(max_num_hands=1)  # En fazla 2 el algılansın
+        self.hands = self.mp_hands.Hands(max_num_hands=1)
         self.mp_draw = mp.solutions.drawing_utils 
     
 
     def FlowPyrLK(self, prev_gray, next_gray, frame2):
         if self.p0 is None:
-            return frame2  # takip noktası yoksa boş işlem
+            return frame2 
     
         p1, st, err = cv2.calcOpticalFlowPyrLK(prev_gray, next_gray, self.p0, None, **self.lk_params)
         if p1 is not None and st is not None:
@@ -40,7 +40,17 @@ class HandDetect:
         else:
             self.start = False
             return frame2
-
+    
+    def hand_land(self, frame2, hand_landmarks):
+        self.mp_draw.draw_landmarks(frame2, hand_landmarks, self.mp_hands.HAND_CONNECTIONS)
+        thumb_tip = hand_landmarks.landmark[8]
+        h, w, _ = frame2.shape
+        cx, cy = int(thumb_tip.x * w), int(thumb_tip.y * h)
+        cv2.circle(frame2, (cx, cy), 10, (0, 255, 0), -1)
+        self.p0 = np.array([[[cx, cy]]], dtype=np.float32)
+        self.start = True
+        
+        
         
     
     def main(self):
@@ -61,14 +71,7 @@ class HandDetect:
             if result.multi_hand_landmarks:
                 if not self.start:
                     hand_landmarks = result.multi_hand_landmarks[0]
-                    self.mp_draw.draw_landmarks(frame2, hand_landmarks, self.mp_hands.HAND_CONNECTIONS)
-        
-                    thumb_tip = hand_landmarks.landmark[8]
-                    h, w, _ = frame2.shape
-                    cx, cy = int(thumb_tip.x * w), int(thumb_tip.y * h)
-                    cv2.circle(frame2, (cx, cy), 10, (0, 255, 0), -1)
-                    self.p0 = np.array([[[cx, cy]]], dtype=np.float32)
-                    self.start = True
+                    self.hand_land(frame2, hand_landmarks)
                     
                 self.img = self.FlowPyrLK(prev_gray, next_gray, frame2)
                 cv2.imshow('Hareketli Nesne Takibi', self.img)
