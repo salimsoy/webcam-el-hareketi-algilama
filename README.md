@@ -45,7 +45,10 @@ Dense optik akış, bir sahnedeki nesnelerle kamera arasındaki bağıl harekete
 
 # Webcam ile El Takibi Uygulaması
 ### `main_1.py`
--
+- MediaPipe ile el algılanır.
+- İşaret parmağının ucu (landmark 8) takip başlangıç noktası olarak alınır.
+- Her karede bu noktanın hareketi Lucas-Kanade ile takip edilir.
+- Takip noktası ekranda çizgi ve daireyle görselleştirilir.
 
 Aşağıda Python kodu ve açıklamaları yer almaktadır.
 ```python
