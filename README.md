@@ -1,7 +1,7 @@
 # Webcam ile Hareketli Nesne Takip Sistemi
 Bu proje, OpenCV kullanarak kamera görüntüsünde hareketli nesneleri tespit edip bu nesneleri takip eden bir uygulamadır ve burada nesne olarak işaret parmağını seçeriz.
-1- **Hareketli nesne tespiti** – Farneback Optical Flow algoritması kullanılarak, **Nesne takibi** – Lucas-Kanade (Pyramidal LK) yöntemi ile yapılır.
-2- **MediaPipe** ile eldeki parmak ucunu algılayarak **Lucas-Kanade Optical Flow** yöntemi ile hareketini takip eder.
+-  **Hareketli nesne tespiti** – Farneback Optical Flow algoritması kullanılarak, **Nesne takibi** – Lucas-Kanade (Pyramidal LK) yöntemi ile yapılır.
+-  **MediaPipe** ile eldeki parmak ucunu algılayarak **Lucas-Kanade Optical Flow** yöntemi ile hareketini takip eder.
 
 ## Lucas-Kanade
 Lucas-Kanade, optik akışın en çok bilinen yöntemlerinden biridir. Yalnızca bazı önemli noktaların (örneğin köşe veya kenar gibi dikkat çeken yerlerin) hareketini takip eder. Bu yüzden seyrek optik akış denir.
